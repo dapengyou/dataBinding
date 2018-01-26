@@ -3,6 +3,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="user"
             type="com.test.databinding.User" />
@@ -32,16 +34,17 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="输入内容"
-            android:text="@{user.lastName}" />
+            android:onTextChanged="@{buttonClick.onTextChanged}"
+            android:text="@{user.firstName}" />
         <!--::与.便于区分-->
         <EditText
-            android:id="@+id/et_hiht"
+            android:id="@+id/et_lastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="输入内容"
             android:onTextChanged="@{buttonClick.onTextChanged}"
-            android:text="@{user.firstName}" />
+            android:text="@{user.lastName}" />
 
         <Button
             android:layout_width="wrap_content"
@@ -70,6 +73,14 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="@{user.firstName}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="@{user.lastName}" />
+
 
     </LinearLayout>
 

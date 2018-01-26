@@ -3,8 +3,10 @@ package com.test.databinding;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.test.databinding.databinding.ActivityMainBinding;
@@ -47,11 +49,21 @@ public class MainActivity extends AppCompatActivity {
             binding.tvChange.setText(mUser.getFirstName());
         }
 
-        public void onTextChanged(CharSequence charSequence, int start, int end, int count) {
-            user.setFirstName(charSequence.toString());
+        public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+            String etFirstName;
+            String etLastName;
+            etFirstName = binding.etFirstName.getText().toString().trim();
+            etLastName = binding.etLastName.getText().toString().trim();
+            if (!TextUtils.isEmpty(etFirstName)) {
+                user.setFirstName(etFirstName);
+            }
+            if (!TextUtils.isEmpty(etLastName)) {
+                user.setLastName(etLastName);
+            }
             //刷新user
-            binding.setUser(user);
+//            binding.setUser(user);
         }
+
     }
 
 }
