@@ -1,17 +1,12 @@
 package com.test.databinding;
 
 /**
- * Created by lady_zhou on 2018/1/23.
+ * Created by lady_zhou on 2018/1/24.
  */
 
-public class User {
-    public String firstName;
-    public String lastName;
-
-    public User(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+public class UserBean {
+    private String firstName;
+    private String lastName;
 
     public String getFirstName() {
         return firstName;

@@ -6,6 +6,10 @@
         <variable
             name="user"
             type="com.test.databinding.User" />
+
+        <variable
+            name="buttonClick"
+            type="com.test.databinding.MainActivity.ButtonClick" />
     </data>
 
     <LinearLayout
@@ -15,10 +19,11 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="dataBinding"
+            android:text="会改变的地方"
             android:textSize="16sp" />
 
         <EditText
@@ -27,14 +32,45 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="输入内容"
-            android:text="@{user.firstName}"/>
+            android:text="@{user.lastName}" />
+        <!--::与.便于区分-->
         <EditText
-            android:id="@+id/et_lastName"
+            android:id="@+id/et_hiht"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="输入内容"
-            android:text="@{user.lastName}"/>
+            android:onTextChanged="@{buttonClick.onTextChanged}"
+            android:text="@{user.firstName}" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="@{buttonClick::onClickBtOne}"
+            android:text="只是点击事件" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="@{buttonClick::onClickBtTwo}"
+            android:text="@{buttonClick.getBtTwoText}" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="@{()->buttonClick.onClickBtThree(user)}"
+            android:text="点击后改变textView文字" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="@{user.firstName}" />
+
     </LinearLayout>
 
 </layout>
